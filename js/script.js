@@ -105,6 +105,57 @@ let SpeechRecognition =
   recognition,
   recording = false;
 
+// function speechToText() {
+//   try {
+//     recognition = new SpeechRecognition();
+//     recognition.interimResults = true;
+//     recordBtn.classList.add("recording");
+//     recordBtn.querySelector("p").innerHTML = "Stop Listening...";
+//     recognition.start();
+//     recognition.onresult = (event) => {
+//       const speechResult = event.results[0][0].transcript;
+//       //detect when intrim results
+//       if (event.results[0].isFinal) {
+//         result.innerHTML += " " + speechResult;
+//         // result.querySelector("p").remove();
+//       } else {
+//         //creative p with class interim if not already there
+//         if (!document.querySelector(".interim")) {
+//           result.appendChild(textarea);
+//         }
+//         //update the interim p with the speech result
+//         document.querySelector(".interim").innerHTML = " " + speechResult;
+//       }
+//     };
+//     recognition.onspeechend = () => {
+//       speechToText();
+//     };
+//     recognition.onerror = (event) => {
+//       stopRecording();
+//       if (event.error === "no-speech") {
+//         alert("No speech was detected. Stopping...");
+//       } else if (event.error === "audio-capture") {
+//         alert(
+//           "No microphone was found. Ensure that a microphone is installed."
+//         );
+//       } else if (event.error === "not-allowed") {
+//         alert("Permission to use microphone is blocked.");
+//       } else if (event.error === "aborted") {
+//         alert("Listening Stopped.");
+//       } else {
+//         alert("Error occurred in recognition: " + event.error);
+//       }
+//     };
+//   } catch (error) {
+//     recording = false;
+//     console.log(error);
+//   }
+// }
+// Variable to store all transcripts
+let allTranscripts = "";
+// Variable to track if the result has been updated
+let isResultUpdated = false;
+
 function speechToText() {
   try {
     recognition = new SpeechRecognition();
@@ -113,21 +164,21 @@ function speechToText() {
     recordBtn.querySelector("p").innerHTML = "Stop Listening...";
     recognition.start();
     recognition.onresult = (event) => {
-      const speechResult = event.results[0][0].transcript;
-      //detect when intrim results
-      if (event.results[0].isFinal) {
-        result.innerHTML += " " + speechResult;
-        // result.querySelector("p").remove();
-      } else {
-        //creative p with class interim if not already there
-        if (!document.querySelector(".interim")) {
-          result.appendChild(textarea);
-        }
-        //update the interim p with the speech result
-        document.querySelector(".interim").innerHTML = " " + speechResult;
+      let speechResult = "";
+      // Concatenate all the interim and final results into one
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        speechResult += event.results[i][0].transcript;
+      }
+      // Add the new transcript to the existing ones only if it hasn't been updated already
+      if (!isResultUpdated) {
+        allTranscripts += speechResult;
+        isResultUpdated = true;
+        // Update the main textarea with all transcripts
+        result.value = allTranscripts;
       }
     };
     recognition.onspeechend = () => {
+      isResultUpdated = false; // Reset the flag when speech ends
       speechToText();
     };
     recognition.onerror = (event) => {
@@ -154,12 +205,24 @@ function speechToText() {
 
 recordBtn.addEventListener("click", () => {
   if (!recording) {
+    // Reset the variable storing transcripts and the flag
+    allTranscripts = "";
+    isResultUpdated = false;
     speechToText();
     recording = true;
   } else {
     stopRecording();
   }
 });
+
+// recordBtn.addEventListener("click", () => {
+//   if (!recording) {
+//     speechToText();
+//     recording = true;
+//   } else {
+//     stopRecording();
+//   }
+// });
 
 function stopRecording() {
   recognition.stop();
