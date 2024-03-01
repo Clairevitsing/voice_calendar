@@ -26,6 +26,27 @@
      border-width: 1px !important;
  }
 
+ .result {
+     width: 100%;
+     min-height: 200px;
+     padding: 10px;
+     border: 1px solid gray;
+     border-radius: 5px;
+     font-size: 18px;
+     font-weight: 500;
+     margin-bottom: 20px;
+ }
+
+ .record img {
+     width: 30px;
+     height: 30px;
+     display: none;
+ }
+
  .record.recording img {
      display: block;
+ }
+
+ .record.recording ion-icon {
+     display: none;
  }

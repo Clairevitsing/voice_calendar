@@ -51,14 +51,15 @@
                                    <button class="btn record btn-primary">
                                     <div class="d-flex align-items-center">
                                         <ion-icon name="mic-outline" class="mr-2" style="font-size: 2rem;"></ion-icon>
-                                        <img src="./assets/bars.svg" alt="" class="mr-2" style="width: 30px; height: 30px;" hidden/>
+                                        <img src="./assets/bars.svg" alt="" class="mr-2" style="width: 30px; height: 30px;"/>
                                         <p class="m-0">Start Listening</p>
                                     </div>
                                 </button>
                                 </div>
-                                <div class="form-group mb-2">
-                                    <textarea class="result" rows="3" spellcheck="false" class="form-control form-control-sm rounded-0" name="description" required ></textarea>
-                                </div>
+                               <div class="form-group mb-2">
+                                <textarea class="result" rows="3" spellcheck="false" placeholder="Text will be shown here" name="description"></textarea>
+                            </div>
+
                                 <div class="form-group mb-2">
                                     <label for="start_datetime" class="control-label">Start</label>
                                     <input type="datetime-local" class="form-control form-control-sm rounded-0" name="start_datetime" id="start_datetime" required>
