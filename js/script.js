@@ -6,6 +6,15 @@ $(document).ready(function () {
   $("#add_event_btn").click(function () {
     $("#event_entry_modal").modal("show");
   });
+  // Ajoutez ce code pour fermer le modal lorsque vous cliquez sur le bouton de fermeture
+  $("#event_entry_modal .closeModal").click(function () {
+    $("#event_entry_modal").modal("hide");
+  });
+
+  $(".btn.btn-primary.btn-sm.rounded-0[type='submit']").click(function (e) {
+    e.preventDefault();
+    $("#schedule-form").submit();
+  });
 });
 
 $(function () {
@@ -61,6 +70,10 @@ $(function () {
   // Form reset listener
   $("#schedule-form").on("reset", function () {
     $(this).find("input:hidden").val("");
+    // réinitialiser le contenu de la zone de texte
+    // $(this).find("textarea").val("");
+    // $(".result").val("");
+    result.innerHTML = "";
     $(this).find("input:visible").first().focus();
   });
 
@@ -135,7 +148,10 @@ function speechToText() {
       }
     };
     recognition.onspeechend = () => {
-      speechToText();
+      if (recording) {
+        speechToText();
+      }
+      // speechToText();
     };
     recognition.onerror = (event) => {
       stopRecording();
@@ -169,8 +185,9 @@ recordBtn.addEventListener("click", () => {
 });
 
 function stopRecording() {
+  recording = false;
   recognition.stop();
   recordBtn.querySelector("p").innerHTML = "Start Listening";
   recordBtn.classList.remove("recording");
-  recording = false;
+  
 }
