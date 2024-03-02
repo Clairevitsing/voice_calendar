@@ -1,12 +1,19 @@
  :root {
-     --bs-success-rgb: 71, 222, 152 !important;
+     --bs-success-rgb: #ebc3c7!important;
  }
- 
+
  html,
  body {
      height: 100%;
      width: 100%;
      font-family: Apple Chancery, cursive;
+ }
+.navbar{
+    background-color: #f04848 !important;
+}
+ .fc-event,
+ .fc-event-dot {
+     background-color: #ebc3c7 !important;
  }
 
  .btn-info.text-light:hover,
@@ -14,18 +21,35 @@
      background: #000;
  }
 
- table,
- tbody,
- td,
- tfoot,
- th,
- thead,
- tr {
-     border-color: #ededed !important;
-     border-style: solid;
-     border-width: 1px !important;
- }
+/* Styles pour le bouton "prev" */
+.fc-prev-button,
+.fc-next-button,
+.fc-today-button,
+.fc-dayGridMonth-button,
+.fc-dayGridWeek-button,
+.fc-list-button {
+    background-color: #f04848 !important;
+}
+/* .fc-daygrid-event-harness {
+    background-color: #ffcc00 !important;
+} */
 
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+    border-color: #ebc3c7 !important;
+    /* Couleur de bordure rouge */
+    border-style: solid;
+    border-width: 1px !important;
+}
+
+#add_event_btn{
+    background-color: #f04848;
+}
  .result {
      width: 100%;
      min-height: 200px;
