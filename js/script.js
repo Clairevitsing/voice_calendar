@@ -1,6 +1,13 @@
 var calendar;
 var Calendar = FullCalendar.Calendar;
 var events = [];
+
+$(document).ready(function () {
+  $("#add_event_btn").click(function () {
+    $("#event_entry_modal").modal("show");
+  });
+});
+
 $(function () {
   if (!!scheds) {
     Object.keys(scheds).map((k) => {

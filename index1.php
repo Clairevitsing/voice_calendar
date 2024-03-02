@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./fullcalendar/lib/main.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./js/jquery-3.6.0.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script src="./fullcalendar/lib/main.min.js"></script>
@@ -32,24 +31,14 @@
     </nav>
     <div class="container py-5" id="page-container">
         <div class="row">
-            <div class="col-md-11">
+            <div class="col-md-9">
                 <div id="calendar"></div>
-            </div>  
-               <div class="col-md-1">
-            <button id="add_event_btn" class="btn btn-danger btn-circle">+</button>
-        </div>  
-            
-        </div>
-    </div> 
-             <div class="modal fade" id="event_entry_modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-md" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="modalLabel">Add New Event</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">�</span>
-				</button>
-			</div>
+            </div>
+            <div class="col-md-3">
+                <div class="cardt rounded-0 shadow">
+                    <div class="card-header bg-gradient bg-primary text-light">
+                        <h5 class="card-title">Add Event</h5>
+                    </div>
                     <div class="card-body">
                         <div class="container-fluid">
                             <form action="create_schedule.php" method="post" id="schedule-form">
