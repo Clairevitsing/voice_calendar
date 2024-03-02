@@ -52,7 +52,7 @@
 			</div>
                     <div class="card-body">
                         <div class="container-fluid">
-                            <form action="create_schedule.php" method="post" id="schedule-form">
+                            <form action="save_schedule.php" method="post" id="schedule-form">
                                 <input type="hidden" name="id" value="">
                                 <div class="form-group mb-2">
                                     <label for="title" class="control-label">Title</label>
@@ -84,7 +84,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="text-center">
-                            <button class="btn btn-primary btn-sm rounded-0" type="submit" form="schedule-form"><i class="fa fa-save"></i> Save</button>
+                            <button class="btn btn-primary btn-sm rounded-0" type="submit" form="schedule-form" id="submit"><i class="fa fa-save"></i> Save</button>
                             <button class="btn btn-default border btn-sm rounded-0" type="reset" form="schedule-form"><i class="fa fa-reset"></i> Cancel</button>
                         </div>
                     </div>

@@ -11,7 +11,7 @@ $(document).ready(function () {
     $("#event_entry_modal").modal("hide");
   });
 
-  $(".btn.btn-primary.btn-sm.rounded-0[type='submit']").click(function (e) {
+  $("{#submit}").click(function (e) {
     e.preventDefault();
     $("#schedule-form").submit();
   });
@@ -80,25 +80,47 @@ $(function () {
 
   // Edit Button
   $("#edit").click(function () {
+    // Attache un gestionnaire d'événements 'click' à l'élément avec l'ID 'edit'.
     var id = $(this).attr("data-id");
+    // Récupère l'attribut 'data-id' de l'élément sur lequel on a cliqué et le stocke dans la variable 'id'.
+    console.log(scheds);
     if (!!scheds[id]) {
+      // Vérifie si l'objet 'scheds' contient une propriété correspondant à 'id'.
       var _form = $("#schedule-form");
+      //Sélectionne l'élément avec l'ID 'schedule-form' et le stocke dans la variable '_form'.
+      $(".modal").modal("hide");
+      $("#event_entry_modal").modal("show");
+      $("#modalLabel").text("Update Event");
+      $("#submit").text("update");
+
       console.log(
+        // Affiche dans la console les informations suivantes :
+        scheds[id],
+        // L'objet 'scheds' correspondant à 'id'.
         String(scheds[id].start_datetime),
+        // La date et l'heure de début de l'événement.
         String(scheds[id].start_datetime).replace(" ", "\\t")
+        //  La date et l'heure de début de l'événement, avec tous les espaces remplacés par des tabulations.
       );
       _form.find('[name="id"]').val(id);
+      // Trouve l'élément avec l'attribut 'name' égal à 'id' dans '_form' et définit sa valeur à 'id'.
       _form.find('[name="title"]').val(scheds[id].title);
+      //  Trouve l'élément avec l'attribut 'name' égal à 'title' dans '_form' et définit sa valeur au titre de l'événement.
       _form.find('[name="description"]').val(scheds[id].description);
+      //  Trouve l'élément avec l'attribut 'name' égal à 'description' dans '_form' et définit sa valeur à la description de l'événement.
+      //  Trouve l'élément avec l'attribut 'name' égal à 'start_datetime' dans '_form' et définit sa valeur à la date et l'heure de début de l'événement, avec tous les espaces remplacés par 'T'.
       _form
         .find('[name="start_datetime"]')
         .val(String(scheds[id].start_datetime).replace(" ", "T"));
+      // Trouve l'élément avec l'attribut 'name' égal à 'end_datetime' dans '_form' et définit sa valeur à la date et l'heure de fin de l'événement, avec tous les espaces remplacés par 'T'.
       _form
         .find('[name="end_datetime"]')
         .val(String(scheds[id].end_datetime).replace(" ", "T"));
       $("#event-details-modal").modal("hide");
+      //Met le focus sur l'élément avec l'attribut 'name' égal à 'title' dans '_form'.
       _form.find('[name="title"]').focus();
     } else {
+      //Si l'objet 'scheds' ne contient pas de propriété correspondant à 'id'...
       alert("Event is undefined");
     }
   });
@@ -190,5 +212,4 @@ function stopRecording() {
   recognition.stop();
   recordBtn.querySelector("p").innerHTML = "Start Listening";
   recordBtn.classList.remove("recording");
-  
 }
