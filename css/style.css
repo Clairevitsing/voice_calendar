@@ -1,5 +1,5 @@
  :root {
-     --bs-success-rgb: #ebc3c7!important;
+     --bs-success-rgb: #f04848!important;
  }
 
  html,
@@ -8,7 +8,7 @@
      width: 100%;
      font-family: Apple Chancery, cursive;
  }
-.navbar{
+#topNavbar{
     background-color: #f04848 !important;
 }
  .fc-event,

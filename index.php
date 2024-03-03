@@ -98,7 +98,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-0">
                 <div class="modal-header rounded-0">
-                    <h5 class="modal-title">Schedule Details</h5>
+                    <h5 class="modal-title">Event Details</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body rounded-0">
@@ -128,7 +128,7 @@
     <!-- Event Details Modal -->
 
 <?php 
-$schedules = $conn->query("SELECT * FROM `schedule_list`");
+$schedules = $conn->query("SELECT * FROM `event`");
 if (!$schedules) {
     die("Erreur lors de l'exécution de la requête : " . mysqli_error($conn));
 }

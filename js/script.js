@@ -90,7 +90,7 @@ $(function () {
       //Sélectionne l'élément avec l'ID 'schedule-form' et le stocke dans la variable '_form'.
       $(".modal").modal("hide");
       $("#event_entry_modal").modal("show");
-      $("#modalLabel").text("Update Event");
+      $("#modalLabel").text("Modify Event Information");
       $("#submit").text("update");
 
       console.log(

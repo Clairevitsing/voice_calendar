@@ -10,13 +10,13 @@ $allday = isset($allday);
 
 if(empty($id)){
     // Requête préparée pour l'INSERT
-    $sql = "INSERT INTO `schedule_list` (`title`, `description`, `start_datetime`, `end_datetime`) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO `event` (`title`, `description`, `start_datetime`, `end_datetime`) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     // Liaison des valeurs et exécution de la requête
     $stmt->bind_param("ssss", $title, $description, $start_datetime, $end_datetime);
 }else{
    // Requête préparée pour l'UPDATE
-    $sql = "UPDATE `schedule_list` SET `title` = ?, `description` = ?, `start_datetime` = ?, `end_datetime` = ? WHERE `id` = ?";
+    $sql = "UPDATE `event` SET `title` = ?, `description` = ?, `start_datetime` = ?, `end_datetime` = ? WHERE `id` = ?";
     $stmt = $conn->prepare($sql);
     // Liaison des valeurs et exécution de la requête
     $stmt->bind_param("ssssi", $title, $description, $start_datetime, $end_datetime, $id);
@@ -26,7 +26,7 @@ if(empty($id)){
 $save = $stmt->execute();
 
 if($save){
-    echo "<script> alert('Schedule Successfully Saved.'); location.replace('./') </script>";
+    echo "<script> alert('Event Successfully Saved.'); location.replace('./') </script>";
 }else{
     echo "<pre>";
     echo "An Error occured.<br>";
