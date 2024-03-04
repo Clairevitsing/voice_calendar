@@ -59,7 +59,7 @@
                                     <input type="text" class="form-control form-control-sm rounded-0" name="title" id="title" required>
                                 </div>
                                 <div class="form-group mb-2">
-                                   <button class="btn record btn-primary">
+                                   <button class="btn record btn-danger">
                                     <div class="d-flex align-items-center">
                                         <ion-icon name="mic-outline" class="mr-2" style="font-size: 2rem;"></ion-icon>
                                         <img src="./assets/bars.svg" alt="" class="mr-2" style="width: 30px; height: 30px;"/>
@@ -84,7 +84,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="text-center">
-                            <button class="btn btn-primary btn-sm rounded-0" type="submit" form="schedule-form" id="submit"><i class="fa fa-save"></i> Save</button>
+                            <button class="btn btn-danger btn-sm rounded-0" type="submit" form="schedule-form" id="submit"><i class="fa fa-save"></i> Save</button>
                             <button class="btn btn-default border btn-sm rounded-0" type="reset" form="schedule-form"><i class="fa fa-reset"></i> Cancel</button>
                         </div>
                     </div>
